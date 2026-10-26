@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Datos</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+</head>
+<body>
+  <hr class="hr1">
+  <div class="c_logo centrar margen">
+    <img src="imagenes/logo_cabecera.png" alt="">
+  </div>
+  <div class="c_conocerte margen centrar">
+    <h2>DÉJANOS CONOCERTE</h2>
+    <br>
+    <hr class="hr2">
+  </div>
+  <div class="c_formulario">
+    <div class="c_info centrar">
+      <h3>¡Compártenos tu información!</h3>
+      <br>
+      <p><strong>Dejanos tus datos personales y nosotros nos comunicaremos contigo lo más pronto posible.</strong></p>
+    </div>
+    <div class="c_datos">
+      <form action="" method="get" id="formulario">
+        <div class="c_1">
+        <input type="text" placeholder="Nombre Completo*" class="elementoformulario" id="nombrecompleto">
+        <input type="email" placeholder="Correo Electronico*" class="elementoformulario" id="email">
+        <input type="tel" placeholder="Celular*" class="elementoformulario" id="celular">
+        <input type="text" placeholder="Ciudad" class="elementoformulario">
+        <input type="text" placeholder="Localidad" class="elementoformulario">
+        <button type="button" id="btn_validar">Enviar</button>
+      </div>
+      <div class="c_2">
+        <input type="text" placeholder="Estado" class="elementoformulario">
+        <input type="text" placeholder="Colonia" class="elementoformulario">
+        <select name="area" id="area" class="elementoformulario">
+          <option value="">Elige tu área de interes*</option>
+          <option value="1">Cajas</option>
+          <option value="2">Servicios</option>
+          <option value="3">Asesoramiento Financiero</option>
+          <option value="4">Gestoría y Cobranza</option>
+          <option value="5">Crédito</option>
+          <option value="6">Jurídico</option>
+          <option value="7">Archivo</option>
+          <option value="8">Mercadotecnia</option>
+          <option value="9">Diligencias</option>
+          <option value="10">Compras</option>
+          <option value="11">Intendencia</option>
+          <option value="12">Auditoría</option>
+          <option value="13">Capital Humano</option>
+          <option value="14">Mantenimiento</option>
+          <option value="15">Sistemas</option>
+          <option value="16">Contabilidad</option>
+          <option value="17">Administración</option>
+        </select>
+        <br>
+        <input type="radio" name="persona" value="1" class="persona">
+        <label for="persona">Persona Fisica</label>
+        <input type="radio" name="persona" value="2" class="persona">
+        <label for="persona">Persona Moral</label>
+      </div>
+      </form>
+    </div>
+  </div>
+  <div class="c_alumno centrar margen">
+    <h4>Nombre del alumno: Héctor González Pacheco Illescas</h4>
+    <h4>Grupo 7sb</h4>
+    <h4>Materia: Programación Web</h4>
+  </div>
+
+<script>
+  $("#btn_validar").click(function (){
+   if($("#nombrecompleto").val().trim() == ""){
+    alert("No escribiste el nombre");
+    $("#nombrecompleto").focus();
+    return 0;
+   }
+   if($("#email").val().trim() == ""){
+    alert("No escribiste el email");
+    $("#email").focus();
+    return 0;
+   }
+  let expresionCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!expresionCorreo.test($("#email").val().trim())){
+      alert("Escribe un email válido");
+      $("#email").focus();
+      return 0;
+    }
+  if($("#celular").val().trim() == ""){
+    alert("No escribiste tu numero de celular");
+    $("#celular").focus();
+    return 0;
+   }
+   let expresionCelular = /^[0-9]{10}$/;
+
+   if (!expresionCelular.test($("#celular").val().trim())){
+      alert("Escribe un numero valido");
+      $("#celular").focus();
+      return 0;
+    }
+
+    if($("#area").val() == ""){
+      alert("Debes seleccionar un area de interes");
+      $("#area").focus();
+      return 0;
+    }
+
+    if(!$(".persona").is(":checked")){
+      alert("Debes seleccionar que tipo de persona eres");
+      $(".persona").first().focus();
+      return 0;
+    }
+
+    $("#formulario").submit();
+
+  });
+</script>
+</body>
+</html>
